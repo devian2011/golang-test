@@ -30,7 +30,7 @@ func (w *Writer) Write(matrices [][][]string) {
 }
 
 func (w *Writer) WriteErr(err error) {
-	b, errorWriteErr := w.error.Write([]byte(err.Error()))
+	_, errorWriteErr := w.error.Write([]byte(err.Error()))
 	if errorWriteErr != nil {
 		panic(errorWriteErr.Error())
 	}
@@ -38,5 +38,4 @@ func (w *Writer) WriteErr(err error) {
 	if flushErr != nil {
 		panic(flushErr.Error())
 	}
-	fmt.Println(b)
 }
